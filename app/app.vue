@@ -1,6 +1,13 @@
+<script setup lang="ts">
+const { loggedIn, user, session, fetch, clear, openInPopup } = useUserSession()
+onMounted(() => {
+  fetch()
+})
+</script>
+
 <template>
-  <div>
+  <UApp>
     <h1>Welcome to Blackjack!</h1>
-    <Game />
-  </div>
+    <NuxtPage/>
+  </UApp>
 </template>

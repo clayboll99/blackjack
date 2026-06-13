@@ -2,7 +2,5 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  runtimeConfig: {
-    mongodbUri: 'mongodb://root:secretpassword@mongodb:27017/'
-  }
+  modules: ['nuxt-auth-utils', '@nuxt/ui', '@pinia/nuxt', 'nuxt-mongoose'],
 })
