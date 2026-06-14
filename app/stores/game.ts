@@ -1,11 +1,17 @@
-import {isEmpty} from "#ui/utils";
-
 export const useGameStore = defineStore('game', () => {
     const game = ref()
     const hand = computed(() => {
         if (game.value) {
-            return game.value.hands.find((hand) => hand.player.email === useUserSession().email)
+            return game.value.hands.find((hand) => hand.player.email === useUserSession().user.value?.email)
         }
+        return {
+            player: useUserSession().user,
+            hand: [],
+            score: 0
+        }
+    })
+    const score = computed(() => {
+        return hand.value.score
     })
 
     async function getOrCreateGame() {
@@ -22,5 +28,5 @@ export const useGameStore = defineStore('game', () => {
         }
     }
 
-    return {game, hand, getOrCreateGame, drawCard}
+    return {game, hand, getOrCreateGame, drawCard, score}
 })

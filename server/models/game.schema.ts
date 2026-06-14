@@ -8,5 +8,6 @@ export const Game = defineMongooseModel({
         players: [User.schema],
         deck: { type: Array, required: true },
         hands: [Hand.schema],
+        status: {type: String, required: true},
     }
 })

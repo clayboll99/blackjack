@@ -5,7 +5,6 @@ export default defineEventHandler(async (event) => {
     const game = await Game.findOne().elemMatch('players', function (elem: Query<any, any>) {
         elem.where({'email': user.user?.email})
     }).exec()
-    console.log(game)
     return game ? {
         id: game.id,
         players: game.players,

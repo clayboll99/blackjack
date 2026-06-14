@@ -1,6 +1,7 @@
 import Deck from "#shared/deck";
 import {Hand} from "#server/models/hand.schema";
 import {User} from "#server/models/user.schema";
+import {calculateScore} from "#shared/utils/cardUtils";
 
 export default defineEventHandler(async (event) => {
     const player = await getUserSession(event)
@@ -17,15 +18,18 @@ export default defineEventHandler(async (event) => {
         returnDocument: 'after',
         runValidators: true
     })
-    currentHand.hand = [deck.cards.pop()]
+    const hand = [deck.cards.pop(), deck.cards.pop()]
+    currentHand.hand = hand
     currentHand.player = user
+    currentHand.score = calculateScore(hand)
     currentHand.save()
 
     const game = new Game({
         id: crypto.randomUUID(),
         players: [player.user],
         deck: deck.cards,
-        hands: [currentHand]
+        hands: [currentHand],
+        status: 'playing'
     })
 
     game.save()
