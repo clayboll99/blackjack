@@ -3,12 +3,17 @@ import type {DropdownMenuItem} from "#ui/components/DropdownMenu.vue";
 
 const { loggedIn, user, session, fetch, clear, openInPopup } = useUserSession()
 
+const logout = async () => {
+  await clear()
+  navigateTo('/')
+}
+
 const items = [
     [
       {
         label: "Logout",
         icon: 'i-lucide-log-out',
-        onSelect: clear
+        onSelect: logout
       }
     ]
 ] satisfies DropdownMenuItem[][]

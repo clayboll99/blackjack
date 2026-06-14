@@ -1,4 +1,4 @@
 <script setup lang="ts">
-navigateTo('/')
+// navigateTo('/')
 </script>
 <template><div></div></template>
