@@ -1,17 +1,14 @@
 <script setup lang="ts">
-const cards = ["Old Card"]
-
-const drawCard = () => {
-  cards.push("New Card")
-}
+const gameStore = useGameStore()
+gameStore.getOrCreateGame()
 </script>
 
 <template>
   <div> You have drawn the following cards: </div>
-  <div v-for="card in cards" :key="card">
-    {{ card}}
+  <div v-for="card in gameStore.game?.hands[0].hand" :key="card">
+    {{ card }}
   </div>
-  <button @click="drawCard()">Draw</button>
+  <button @click="gameStore.drawCard()">Draw</button>
 </template>
 
 <style scoped>

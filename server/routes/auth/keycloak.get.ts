@@ -4,9 +4,7 @@ export default defineOAuthKeycloakEventHandler({
     },
     async onSuccess(event, { user, tokens }) {
       await setUserSession(event, {
-          user: {
-              email: user.email
-          },
+          user: user,
           secure: {
               token: tokens.token
           }
