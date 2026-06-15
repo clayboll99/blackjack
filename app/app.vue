@@ -38,7 +38,9 @@ const items = [
       </template>
     </UHeader>
     
-    <UButton v-if="!loggedIn" to="/auth/keycloak">Login</UButton>
-    <NuxtPage v-else />
+    <UMain>
+      <UButton v-if="!loggedIn" to="/auth/keycloak">Login</UButton>
+      <NuxtPage v-else />
+    </UMain>
   </UApp>
 </template>
