@@ -79,6 +79,7 @@ bun run preview
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
 
 ## Running the Entire Application
+
 Before running make sure to have a `.env` file
 
 ```bash

@@ -8,11 +8,11 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'nuxt-mongoose',
     '@vueuse/nuxt',
-    '@nuxt/eslint'
+    '@nuxt/eslint',
   ],
   mongoose: {
     options: {
-        dbName: 'blackjack'
-    }
-  }
+      dbName: 'blackjack',
+    },
+  },
 })
