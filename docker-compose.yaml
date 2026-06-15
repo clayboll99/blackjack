@@ -1,0 +1,13 @@
+include:
+  - docker-compose-keycloak.yaml
+  - docker-compose-mongo.yaml
+
+services:
+  blackjack:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
