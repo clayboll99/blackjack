@@ -7,7 +7,8 @@ gameStore.getOrCreateGame()
   <div class="game-table">
     <div> You have drawn the following cards: </div>
     <div class="hand">
-      <PlayingCard v-for="card in gameStore.hand.hand"
+      <PlayingCard
+v-for="card in gameStore.hand.hand"
                    :key="card"
                    :suit="card.suit"
                    :value="card.value"
