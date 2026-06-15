@@ -16,6 +16,20 @@ export const useGameStore = defineStore('game', () => {
     return hand.value.score
   })
 
+  const dealerHand = computed(() => {
+    if (game.value) {
+      return game.value.dealer_hand.hand
+    }
+    return []
+  })
+
+  const dealerScore = computed(() => {
+    if(game.value) {
+      return game.value.dealer_hand.score
+    }
+    return 0
+  })
+
   async function getOrCreateGame() {
     game.value = await $fetch('/api/game')
     if (!game.value) {
@@ -30,5 +44,5 @@ export const useGameStore = defineStore('game', () => {
     }
   }
 
-  return { game, hand, getOrCreateGame, drawCard, score }
+  return { game, hand, getOrCreateGame, drawCard, score, dealerHand, dealerScore }
 })

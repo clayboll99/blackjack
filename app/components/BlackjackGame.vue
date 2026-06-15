@@ -4,20 +4,33 @@ gameStore.getOrCreateGame()
 </script>
 
 <template>
-  <div class="game-table">
-    <div>You have drawn the following cards:</div>
-    <div class="hand">
-      <PlayingCard
-        v-for="card in gameStore.hand.hand"
-        :key="card"
-        :suit="card.suit"
-        :value="card.value"
-        class="overlapping-card"
-      />
-    </div>
-    <div>{{ gameStore.score }}</div>
+  <UContainer class="game-table">
+    <UContainer>
+      <div>The dealer has the following cards:</div>
+        <PlayingCard 
+          v-for="card in gameStore.dealerHand"
+          :key="card"
+          :suit="card.suit"
+          :value="card.value"
+          :flipped="card.flipped"
+        />
+      <div>Dealer's Score: {{ gameStore.dealerScore }}</div>
+    </UContainer>
+    <UContainer>
+      <div>You have drawn the following cards:</div>
+      <div class="hand">
+        <PlayingCard
+          v-for="card in gameStore.hand.hand"
+          :key="card"
+          :suit="card.suit"
+          :value="card.value"
+          class="overlapping-card"
+        />
+      </div>
+      <div>Your Score: {{ gameStore.score }}</div>
+    </UContainer>
     <button @click="gameStore.drawCard()">Draw</button>
-  </div>
+  </UContainer>
 </template>
 
 <style scoped>
