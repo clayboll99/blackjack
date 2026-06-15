@@ -23,7 +23,7 @@ const items = [
   <UApp>
     <UHeader>
       <template #title>
-        Blackjack
+        <UIcon name="i-streamline-flex-gambling-remix"/> Blackjack
       </template>
       <template #right>
         <UDropdownMenu v-if="user" :items="items">
