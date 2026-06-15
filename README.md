@@ -2,7 +2,7 @@
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Setup
+## Development Setup
 
 Make sure to install dependencies:
 
@@ -25,6 +25,10 @@ bun install
 Start the development server on `http://localhost:3000`:
 
 ```bash
+# Do this first
+cp sample.env .env
+# Make sure to update the .env file as needed
+
 # npm
 npm run dev
 
@@ -73,3 +77,11 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## Running the Entire Application
+Before running make sure to have a `.env` file
+
+```bash
+# Run everything in docker
+docker compose up -d
+```
