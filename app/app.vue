@@ -21,17 +21,24 @@ const items = [
 
 <template>
   <UApp>
-    <h1>Welcome to Blackjack!</h1>
-    <UDropdownMenu v-if="user" :items="items">
-      <UButton
-        color="neutral"
-        variant="ghost"
-        trailing-icon="i-lucide-chevron-down"
-      >
-        <UAvatar :src="user.id" />
-      </UButton>
-    </UDropdownMenu>
+    <UHeader>
+      <template #title>
+        Blackjack
+      </template>
+      <template #right>
+        <UDropdownMenu v-if="user" :items="items">
+          <UButton
+            color="neutral"
+            variant="ghost"
+            trailing-icon="i-lucide-chevron-down"
+          >
+            <UAvatar icon="i-lucide-user" />
+          </UButton>
+        </UDropdownMenu>
+      </template>
+    </UHeader>
+    
     <UButton v-if="!loggedIn" to="/auth/keycloak">Login</UButton>
-    <NuxtPage />
+    <NuxtPage v-else />
   </UApp>
 </template>
