@@ -2,7 +2,7 @@ import type {Query} from "mongoose";
 
 export default defineEventHandler(async (event) => {
     const user = await getUserSession(event)
-    const game = await Game.findOne().elemMatch('players', function (elem: Query<any, any>) {
+    const game = await Game.findOne().elemMatch('players', function (elem: Query<unknown, unknown>) {
         elem.where({'email': user.user?.email})
     }).exec()
     return game ? {

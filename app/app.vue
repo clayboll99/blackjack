@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type {DropdownMenuItem} from "#ui/components/DropdownMenu.vue";
 
-const { loggedIn, user, session, fetch, clear, openInPopup } = useUserSession()
+const { loggedIn, user, clear } = useUserSession()
 
 const logout = async () => {
   await clear()

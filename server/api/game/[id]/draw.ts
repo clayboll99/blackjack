@@ -1,5 +1,4 @@
 import {Hand} from "#server/models/hand.schema";
-import Deck from "#shared/deck";
 import { calculateScore } from '#shared/utils/cardUtils'
 
 export default defineEventHandler(async (event) => {

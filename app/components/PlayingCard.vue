@@ -23,6 +23,8 @@ const suit = computed(() => {
       return '♣'
     case 'Spades':
       return '♠'
+    default:
+      return 'Joker'
   }
 })
 </script>
