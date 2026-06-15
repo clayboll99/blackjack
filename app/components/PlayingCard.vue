@@ -1,17 +1,17 @@
 <script setup lang="ts">
 const props = defineProps<{
-  suit: string,
-  value: string,
+  suit: string
+  value: string
 }>()
 
 const color = computed(() => {
-  if(props.suit === 'Hearts' || props.suit === 'Diamonds'){
+  if (props.suit === 'Hearts' || props.suit === 'Diamonds') {
     return 'red'
   }
   return 'black'
 })
 const suit = computed(() => {
-  if(props.suit === 'Diamonds'){
+  if (props.suit === 'Diamonds') {
     return '♦'
   }
   switch (props.suit) {
@@ -54,7 +54,7 @@ const suit = computed(() => {
   background: white;
   position: relative;
   display: flex;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   font-family: sans-serif;
 }
 
@@ -67,8 +67,15 @@ const suit = computed(() => {
   align-items: center;
 }
 
-.top-left { top: 8px; left: 8px; }
-.bottom-right { bottom: 8px; right: 8px; transform: rotate(180deg); }
+.top-left {
+  top: 8px;
+  left: 8px;
+}
+.bottom-right {
+  bottom: 8px;
+  right: 8px;
+  transform: rotate(180deg);
+}
 
 .card-center {
   margin: auto;

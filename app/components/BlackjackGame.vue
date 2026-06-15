@@ -5,14 +5,15 @@ gameStore.getOrCreateGame()
 
 <template>
   <div class="game-table">
-    <div> You have drawn the following cards: </div>
+    <div>You have drawn the following cards:</div>
     <div class="hand">
       <PlayingCard
-v-for="card in gameStore.hand.hand"
-                   :key="card"
-                   :suit="card.suit"
-                   :value="card.value"
-                   class="overlapping-card" />
+        v-for="card in gameStore.hand.hand"
+        :key="card"
+        :suit="card.suit"
+        :value="card.value"
+        class="overlapping-card"
+      />
     </div>
     <div>{{ gameStore.score }}</div>
     <button @click="gameStore.drawCard()">Draw</button>
