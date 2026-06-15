@@ -23,7 +23,7 @@ const items = [
   <UApp>
     <UHeader>
       <template #title>
-        <UIcon name="i-streamline-flex-gambling-remix"/> Blackjack
+        <UIcon name="i-streamline-flex-gambling-remix" /> Blackjack
       </template>
       <template #right>
         <UDropdownMenu v-if="user" :items="items">
@@ -37,7 +37,7 @@ const items = [
         </UDropdownMenu>
       </template>
     </UHeader>
-    
+
     <UMain>
       <UButton v-if="!loggedIn" to="/auth/keycloak">Login</UButton>
       <NuxtPage v-else />

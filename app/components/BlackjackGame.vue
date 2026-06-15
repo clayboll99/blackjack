@@ -7,13 +7,13 @@ gameStore.getOrCreateGame()
   <UContainer class="game-table">
     <UContainer>
       <div>The dealer has the following cards:</div>
-        <PlayingCard 
-          v-for="card in gameStore.dealerHand"
-          :key="card"
-          :suit="card.suit"
-          :value="card.value"
-          :flipped="card.flipped"
-        />
+      <PlayingCard
+        v-for="card in gameStore.dealerHand"
+        :key="card"
+        :suit="card.suit"
+        :value="card.value"
+        :flipped="card.flipped"
+      />
       <div>Dealer's Score: {{ gameStore.dealerScore }}</div>
     </UContainer>
     <UContainer>

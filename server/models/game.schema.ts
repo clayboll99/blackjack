@@ -11,10 +11,13 @@ export const Game = defineMongooseModel({
     status: { type: String, required: true },
     dealer_hand: {
       score: Number,
-      hand: [{
-      suit: String,
-      value: String,
-      flipped: Boolean
-    }]
+      hand: [
+        {
+          suit: String,
+          value: String,
+          flipped: Boolean,
+        },
+      ],
+    },
   },
 })

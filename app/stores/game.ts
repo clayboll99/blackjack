@@ -24,7 +24,7 @@ export const useGameStore = defineStore('game', () => {
   })
 
   const dealerScore = computed(() => {
-    if(game.value) {
+    if (game.value) {
       return game.value.dealer_hand.score
     }
     return 0
@@ -44,5 +44,13 @@ export const useGameStore = defineStore('game', () => {
     }
   }
 
-  return { game, hand, getOrCreateGame, drawCard, score, dealerHand, dealerScore }
+  return {
+    game,
+    hand,
+    getOrCreateGame,
+    drawCard,
+    score,
+    dealerHand,
+    dealerScore,
+  }
 })

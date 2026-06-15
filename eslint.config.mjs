@@ -6,5 +6,5 @@ import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 export default withNuxt(
   // Your custom configs here
   eslintConfigPrettier,
-  eslintPluginPrettierRecommended
+  eslintPluginPrettierRecommended,
 )

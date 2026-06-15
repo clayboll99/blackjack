@@ -32,8 +32,9 @@ export default defineEventHandler(async (event) => {
   dealerHand.push(deck.cards.pop())
   const flipCard = {
     ...deck.cards.pop(),
-    flipped: true
+    flipped: true,
   }
+  dealerHand.push(flipCard)
 
   const game = new Game({
     id: crypto.randomUUID(),
@@ -43,8 +44,8 @@ export default defineEventHandler(async (event) => {
     status: 'playing',
     dealer_hand: {
       score: 0,
-      hand: dealerHand
-    }
+      hand: dealerHand,
+    },
   })
 
   game.save()
