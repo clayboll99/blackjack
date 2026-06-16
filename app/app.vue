@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { DropdownMenuItem } from '#ui/components/DropdownMenu.vue'
 
-const { loggedIn, user, clear } = useUserSession()
+const { loggedIn, user, clear, openInPopup } = useUserSession()
 
 const logout = async () => {
   await clear()
@@ -39,7 +39,7 @@ const items = [
     </UHeader>
 
     <UMain>
-      <UButton v-if="!loggedIn" to="/auth/keycloak">Login</UButton>
+
       <NuxtPage />
     </UMain>
   </UApp>

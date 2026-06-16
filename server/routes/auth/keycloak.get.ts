@@ -9,7 +9,7 @@ export default defineOAuthKeycloakEventHandler({
         token: tokens.token,
       },
     })
-    return sendRedirect(event, '/game')
+    return sendRedirect(event, '/')
   },
   onError(event, error) {
     console.error('Keycloak OAuth error:', error)

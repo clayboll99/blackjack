@@ -16,4 +16,12 @@ export default defineNuxtConfig({
       dbName: 'blackjack',
     },
   },
+  runtimeConfig : {
+    session: {
+        cookie: {
+            secure: false,
+            sameSite: 'lax'
+        }
+    }
+  }
 })
