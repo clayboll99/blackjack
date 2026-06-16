@@ -67,6 +67,6 @@ export const useGameStore = defineStore('game', () => {
     dealerScore,
     isLoading,
     dealersTurn,
-    winner
+    winner,
   }
 })

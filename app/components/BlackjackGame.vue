@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import GameActions from "~/components/GameActions.vue";
+import GameActions from '~/components/GameActions.vue'
 
 const gameStore = useGameStore()
 gameStore.getOrCreateGame()
@@ -7,9 +7,7 @@ gameStore.getOrCreateGame()
 
 <template>
   <UContainer class="game-table">
-    <UContainer v-if="gameStore.isLoading">
-      Game is loading...
-    </UContainer>
+    <UContainer v-if="gameStore.isLoading"> Game is loading... </UContainer>
     <UContainer v-else class="grid grid-cols-2">
       <UContainer>
         <div>The dealer has the following cards:</div>

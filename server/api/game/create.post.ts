@@ -31,7 +31,7 @@ export default defineEventHandler(async (event) => {
   const dealerHand = []
   dealerHand.push({
     ...deck.cards.pop(),
-    flipped: false
+    flipped: false,
   })
   const flipCard = {
     ...deck.cards.pop(),
@@ -60,6 +60,6 @@ export default defineEventHandler(async (event) => {
     dealer_hand: {
       score: game.dealer_hand.score,
       hand: dealerHand,
-    }
+    },
   }
 })
