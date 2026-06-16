@@ -40,7 +40,7 @@ const items = [
 
     <UMain>
       <UButton v-if="!loggedIn" to="/auth/keycloak">Login</UButton>
-      <NuxtPage v-else />
+      <NuxtPage />
     </UMain>
   </UApp>
 </template>

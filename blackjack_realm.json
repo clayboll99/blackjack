@@ -671,7 +671,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "**********",
+      "secret": "uwDu0mShTZm80MyIkWz1yZJs9UNYlkIi",
       "redirectUris": [
         "http://localhost:3000/auth/keycloak"
       ],

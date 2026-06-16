@@ -43,7 +43,7 @@ export default defineEventHandler(async (event) => {
     hands: [currentHand],
     status: 'playing',
     dealer_hand: {
-      score: 0,
+      score: calculateScore(dealerHand),
       hand: dealerHand,
     },
   })
@@ -54,5 +54,9 @@ export default defineEventHandler(async (event) => {
     id: game.id,
     players: game.players,
     hands: game.hands,
+    dealer_hand: {
+      score: game.dealer_hand.score,
+      hand: dealerHand,
+    }
   }
 })

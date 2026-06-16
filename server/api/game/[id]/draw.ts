@@ -55,6 +55,7 @@ export default defineEventHandler(async (event) => {
       id: newGame?.id,
       hands: newGame?.hands,
       players: newGame?.players,
+      dealer_hand: newGame?.dealer_hand,
     }
   }
   return null

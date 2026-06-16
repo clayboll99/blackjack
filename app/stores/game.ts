@@ -1,5 +1,9 @@
 export const useGameStore = defineStore('game', () => {
   const game = ref()
+  const loading = ref(true)
+  const isLoading = computed(() => {
+    return loading.value
+  })
   const hand = computed(() => {
     if (game.value) {
       return game.value.hands.find(
@@ -18,23 +22,25 @@ export const useGameStore = defineStore('game', () => {
 
   const dealerHand = computed(() => {
     if (game.value) {
-      return game.value.dealer_hand.hand
+      return game.value.dealer_hand?.hand ?? []
     }
     return []
   })
 
   const dealerScore = computed(() => {
     if (game.value) {
-      return game.value.dealer_hand.score
+      return game.value.dealer_hand?.score ?? 0
     }
     return 0
   })
 
   async function getOrCreateGame() {
+    loading.value = true
     game.value = await $fetch('/api/game')
     if (!game.value) {
       game.value = await $fetch('/api/game/create', { method: 'POST' })
     }
+    loading.value = false
   }
 
   async function drawCard() {
@@ -52,5 +58,6 @@ export const useGameStore = defineStore('game', () => {
     score,
     dealerHand,
     dealerScore,
+    isLoading
   }
 })

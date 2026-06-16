@@ -2,6 +2,7 @@
 const props = defineProps<{
   suit: string
   value: string
+  flipped?: boolean
 }>()
 
 const color = computed(() => {
@@ -30,7 +31,7 @@ const suit = computed(() => {
 </script>
 
 <template>
-  <div class="card" :style="{ color: color }">
+  <div v-if="!props.flipped" class="card" :style="{ color: color }">
     <div class="card-corner top-left">
       <div>{{ props.value }}</div>
       <div>{{ suit }}</div>
@@ -42,6 +43,9 @@ const suit = computed(() => {
       <div>{{ props.value }}</div>
       <div>{{ suit }}</div>
     </div>
+  </div>
+  <div v-else class="card">
+    <div class="card-center">Back</div>
   </div>
 </template>
 

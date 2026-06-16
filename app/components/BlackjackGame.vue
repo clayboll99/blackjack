@@ -5,31 +5,39 @@ gameStore.getOrCreateGame()
 
 <template>
   <UContainer class="game-table">
-    <UContainer>
-      <div>The dealer has the following cards:</div>
-      <PlayingCard
-        v-for="card in gameStore.dealerHand"
-        :key="card"
-        :suit="card.suit"
-        :value="card.value"
-        :flipped="card.flipped"
-      />
-      <div>Dealer's Score: {{ gameStore.dealerScore }}</div>
+    <UContainer v-if="gameStore.isLoading">
+      Game is loading...
     </UContainer>
-    <UContainer>
-      <div>You have drawn the following cards:</div>
-      <div class="hand">
-        <PlayingCard
-          v-for="card in gameStore.hand.hand"
-          :key="card"
-          :suit="card.suit"
-          :value="card.value"
-          class="overlapping-card"
-        />
-      </div>
-      <div>Your Score: {{ gameStore.score }}</div>
+    <UContainer v-else>
+      <UContainer>
+        <div>The dealer has the following cards:</div>
+        <div class="hand">
+          <PlayingCard
+            v-for="card in gameStore.dealerHand"
+            :key="card"
+            :suit="card.suit"
+            :value="card.value"
+            :flipped="card.flipped"
+            class="overlapping-card"
+          />
+        </div>
+        <div>Dealer's Score: {{ gameStore.dealerScore }}</div>
+      </UContainer>
+      <UContainer>
+        <div>You have drawn the following cards:</div>
+        <div class="hand">
+          <PlayingCard
+            v-for="card in gameStore.hand.hand"
+            :key="card"
+            :suit="card.suit"
+            :value="card.value"
+            class="overlapping-card"
+          />
+        </div>
+        <div>Your Score: {{ gameStore.score }}</div>
+      </UContainer>
+      <button @click="gameStore.drawCard()">Draw</button>
     </UContainer>
-    <button @click="gameStore.drawCard()">Draw</button>
   </UContainer>
 </template>
 
