@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import GameActions from "~/components/GameActions.vue";
+
 const gameStore = useGameStore()
 gameStore.getOrCreateGame()
 </script>
@@ -8,7 +10,7 @@ gameStore.getOrCreateGame()
     <UContainer v-if="gameStore.isLoading">
       Game is loading...
     </UContainer>
-    <UContainer v-else>
+    <UContainer v-else class="grid grid-cols-2">
       <UContainer>
         <div>The dealer has the following cards:</div>
         <div class="hand">
@@ -23,7 +25,7 @@ gameStore.getOrCreateGame()
         </div>
         <div>Dealer's Score: {{ gameStore.dealerScore }}</div>
       </UContainer>
-      <UContainer>
+      <UContainer class="break-after-column">
         <div>You have drawn the following cards:</div>
         <div class="hand">
           <PlayingCard
@@ -36,8 +38,8 @@ gameStore.getOrCreateGame()
         </div>
         <div>Your Score: {{ gameStore.score }}</div>
       </UContainer>
-      <button @click="gameStore.drawCard()">Draw</button>
     </UContainer>
+    <GameActions />
   </UContainer>
 </template>
 

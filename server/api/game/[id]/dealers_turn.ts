@@ -1,0 +1,57 @@
+export default defineEventHandler(async (event) => {
+    const game = await Game.findOneAndUpdate({ id: event.context?.params?.id }, {
+        $set: {'dealer_hand.hand.$[].flipped': false},
+    })
+    let dealerScore = calculateScore(game?.dealer_hand.hand)
+
+    while (dealerScore < 17) {
+        const gamePlaceholder = await Game.findByIdAndUpdate(game._id, {
+            $push: {
+                'dealer_hand.hand': game.deck.pop()
+            }
+        })
+        dealerScore = calculateScore(gamePlaceholder.dealer_hand.hand)
+        gamePlaceholder.save()
+        console.log(gamePlaceholder.dealer_hand)
+    }
+
+    const finalGamePlaceholder = await Game.findByIdAndUpdate(game._id, {
+        $set: {
+            'dealer_hand.score': dealerScore
+        }
+    })
+
+    let winner = ''
+    let maxHand = {
+        score: 0
+    }
+    for (const hand of finalGamePlaceholder?.hands) {
+        console.log(hand.score)
+        if (hand.score <= 21) {
+            if (hand.score > maxHand.score) {
+                maxHand = hand
+            }
+        }
+    }
+    console.log(maxHand)
+    if (finalGamePlaceholder.dealer_hand.score <= 21) {
+        if (maxHand.score > finalGamePlaceholder?.dealer_hand.score) {
+            winner = maxHand.player.email
+        } else if (maxHand.score = finalGamePlaceholder?.dealer_hand.score) {
+            winner = 'tie'
+        } else {
+            winner = 'dealer'
+        }
+    } else {
+        if (maxHand.score === 0) {
+            winner = 'none'
+        } else {
+            winner = maxHand.player.email
+        }
+    }
+
+    finalGamePlaceholder.winner = winner
+    finalGamePlaceholder.save()
+
+    return finalGamePlaceholder
+})

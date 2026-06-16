@@ -29,7 +29,10 @@ export default defineEventHandler(async (event) => {
   currentHand.save()
 
   const dealerHand = []
-  dealerHand.push(deck.cards.pop())
+  dealerHand.push({
+    ...deck.cards.pop(),
+    flipped: false
+  })
   const flipCard = {
     ...deck.cards.pop(),
     flipped: true,

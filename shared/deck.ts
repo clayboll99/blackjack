@@ -54,6 +54,8 @@ export default class Deck {
         return 8
       case '9':
         return 9
+      case '10':
+        return 10
       case 'J':
         return 10
       case 'Q':

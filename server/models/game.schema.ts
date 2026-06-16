@@ -9,6 +9,7 @@ export const Game = defineMongooseModel({
     deck: { type: Array, required: true },
     hands: [Hand.schema],
     status: { type: String, required: true },
+    winner: String,
     dealer_hand: {
       score: Number,
       hand: [
