@@ -54,7 +54,6 @@ export default defineEventHandler(async (event) => {
     let winner = ''
     let status = 'playing'
     for (const hand of newGame.hands) {
-      console.log(hand)
       if (hand.score > 21) {
         winner = 'dealer'
         status = 'finished'

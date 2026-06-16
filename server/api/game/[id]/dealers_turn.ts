@@ -3,7 +3,9 @@ export default defineEventHandler(async (event) => {
     { id: event.context?.params?.id },
     {
       $set: { 'dealer_hand.hand.$[].flipped': false },
-    },
+    }, {
+      returnDocument: 'after'
+    }
   )
   let dealerScore = calculateScore(game?.dealer_hand.hand)
 
@@ -12,6 +14,8 @@ export default defineEventHandler(async (event) => {
       $push: {
         'dealer_hand.hand': game.deck.pop(),
       },
+    }, {
+      returnDocument: 'after'
     })
     dealerScore = calculateScore(gamePlaceholder.dealer_hand.hand)
 
@@ -24,7 +28,6 @@ export default defineEventHandler(async (event) => {
     score: 0,
   }
   for (const hand of finalGamePlaceholder?.hands ?? []) {
-    console.log(hand.score)
     if (hand.score <= 21) {
       if (hand.score > maxHand.score) {
         maxHand = hand
