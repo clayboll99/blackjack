@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxt/eslint',
   ],
+  css: ['~/assets/css/main.css'],
   mongoose: {
     options: {
       dbName: 'blackjack',
