@@ -17,12 +17,8 @@ export default defineEventHandler(async (event) => {
 
   }
 
-  console.log(dealerScore)
-
   const finalGamePlaceholder = await Game.findById(game._id)
   finalGamePlaceholder?.set('dealer_hand.score', dealerScore)
-
-  console.log(finalGamePlaceholder)
 
   let maxHand = {
     score: 0,

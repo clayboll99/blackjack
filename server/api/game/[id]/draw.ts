@@ -51,11 +51,30 @@ export default defineEventHandler(async (event) => {
 
     const newGame = await Game.findOne({ id: event.context?.params?.id })
 
+    let winner = ''
+    let status = 'playing'
+    for (const hand of newGame.hands) {
+      console.log(hand)
+      if (hand.score > 21) {
+        winner = 'dealer'
+        status = 'finished'
+      } else if (hand.score === 21) {
+        winner = hand.player.email
+        status = 'finished'
+      }
+    }
+
+    newGame.set('winner',winner)
+    newGame.set('status', status)
+
+    newGame.save()
+
     return {
       id: newGame?.id,
       hands: newGame?.hands,
       players: newGame?.players,
       dealer_hand: newGame?.dealer_hand,
+      winner: newGame?.winner
     }
   }
   return null
