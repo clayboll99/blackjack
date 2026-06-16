@@ -14,15 +14,15 @@ export default defineEventHandler(async (event) => {
       },
     })
     dealerScore = calculateScore(gamePlaceholder.dealer_hand.hand)
-    gamePlaceholder.save()
-    console.log(gamePlaceholder.dealer_hand)
+
   }
 
-  const finalGamePlaceholder = await Game.findByIdAndUpdate(game._id, {
-    $set: {
-      'dealer_hand.score': dealerScore,
-    },
-  })
+  console.log(dealerScore)
+
+  const finalGamePlaceholder = await Game.findById(game._id)
+  finalGamePlaceholder?.set('dealer_hand.score', dealerScore)
+
+  console.log(finalGamePlaceholder)
 
   let maxHand = {
     score: 0,
@@ -41,7 +41,7 @@ export default defineEventHandler(async (event) => {
   if (finalGamePlaceholder.dealer_hand.score <= 21) {
     if (maxHand.score > finalGamePlaceholder?.dealer_hand.score) {
       winner = maxHand.player.email
-    } else if ((maxHand.score = finalGamePlaceholder?.dealer_hand.score)) {
+    } else if ((maxHand.score === finalGamePlaceholder?.dealer_hand.score)) {
       winner = 'tie'
     } else {
       winner = 'dealer'
@@ -55,6 +55,7 @@ export default defineEventHandler(async (event) => {
   }
 
   finalGamePlaceholder.winner = winner
+  finalGamePlaceholder.status = 'finished'
   finalGamePlaceholder.save()
 
   return finalGamePlaceholder

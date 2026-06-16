@@ -9,6 +9,7 @@ const game = useGameStore()
   </UContainer>
   <UContainer v-else>
     The winner is {{ game.winner }}!
+    <UButton @click="game.getOrCreateGame()">Start New Game</UButton>
   </UContainer>
 </template>
 <style scoped></style>
