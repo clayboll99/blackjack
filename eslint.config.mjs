@@ -5,6 +5,9 @@ import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 
 export default withNuxt(
   // Your custom configs here
+  {
+    files: ['**/.*.{js,ts,vue}'],
+  },
   eslintConfigPrettier,
   eslintPluginPrettierRecommended,
 )

@@ -2,7 +2,7 @@ import type { Query } from 'mongoose'
 
 export default defineEventHandler(async (event) => {
   const user = await getUserSession(event)
-  const game = await Game.findOne({status: 'playing'})
+  const game = await Game.findOne({ status: 'playing' })
     .elemMatch('players', function (elem: Query<unknown, unknown>) {
       elem.where({ email: user.user?.email })
     })
@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
         players: game.players,
         hands: game.hands,
         dealer_hand: game.dealer_hand,
-        winner: game.winner
+        winner: game.winner,
       }
     : null
 })

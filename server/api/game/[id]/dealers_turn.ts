@@ -3,22 +3,26 @@ export default defineEventHandler(async (event) => {
     { id: event.context?.params?.id },
     {
       $set: { 'dealer_hand.hand.$[].flipped': false },
-    }, {
-      returnDocument: 'after'
-    }
+    },
+    {
+      returnDocument: 'after',
+    },
   )
   let dealerScore = calculateScore(game?.dealer_hand.hand)
 
   while (dealerScore < 17) {
-    const gamePlaceholder = await Game.findByIdAndUpdate(game._id, {
-      $push: {
-        'dealer_hand.hand': game.deck.pop(),
+    const gamePlaceholder = await Game.findByIdAndUpdate(
+      game._id,
+      {
+        $push: {
+          'dealer_hand.hand': game.deck.pop(),
+        },
       },
-    }, {
-      returnDocument: 'after'
-    })
+      {
+        returnDocument: 'after',
+      },
+    )
     dealerScore = calculateScore(gamePlaceholder.dealer_hand.hand)
-
   }
 
   const finalGamePlaceholder = await Game.findById(game._id)
@@ -40,7 +44,7 @@ export default defineEventHandler(async (event) => {
   if (finalGamePlaceholder.dealer_hand.score <= 21) {
     if (maxHand.score > finalGamePlaceholder?.dealer_hand.score) {
       winner = maxHand.player.email
-    } else if ((maxHand.score === finalGamePlaceholder?.dealer_hand.score)) {
+    } else if (maxHand.score === finalGamePlaceholder?.dealer_hand.score) {
       winner = 'tie'
     } else {
       winner = 'dealer'

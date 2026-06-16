@@ -49,7 +49,7 @@ export default defineEventHandler(async (event) => {
       score: calculateScore(dealerHand),
       hand: dealerHand,
     },
-    winner: ''
+    winner: '',
   })
 
   game.save()

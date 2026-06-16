@@ -63,7 +63,7 @@ export default defineEventHandler(async (event) => {
       }
     }
 
-    newGame.set('winner',winner)
+    newGame.set('winner', winner)
     newGame.set('status', status)
 
     newGame.save()
@@ -73,7 +73,7 @@ export default defineEventHandler(async (event) => {
       hands: newGame?.hands,
       players: newGame?.players,
       dealer_hand: newGame?.dealer_hand,
-      winner: newGame?.winner
+      winner: newGame?.winner,
     }
   }
   return null
