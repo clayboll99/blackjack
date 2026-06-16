@@ -14,6 +14,7 @@ export default defineEventHandler(async (event) => {
         players: game.players,
         hands: game.hands,
         dealer_hand: game.dealer_hand,
+        winner: game.winner
       }
     : null
 })

@@ -3,7 +3,12 @@ const game = useGameStore()
 </script>
 
 <template>
-  <UButton @click="game.drawCard()">Hit</UButton>
-  <UButton @click="game.dealersTurn()">Start Dealer's Turn</UButton>
+  <UContainer v-if="game.winner === ''">
+    <UButton @click="game.drawCard()">Hit</UButton>
+    <UButton @click="game.dealersTurn()">Stand</UButton>
+  </UContainer>
+  <UContainer v-else>
+    The winner is {{ game.winner }}!
+  </UContainer>
 </template>
 <style scoped></style>
