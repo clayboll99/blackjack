@@ -5,11 +5,11 @@ export default defineOAuthGitHubEventHandler({
   async onSuccess(event, { user, tokens }) {
     await setUserSession(event, {
       user: {
-        ...user
+        ...user,
       },
       secure: {
-        githubToken: tokens.access_token
-      }
+        githubToken: tokens.access_token,
+      },
     })
     return sendRedirect(event, '/')
   },
