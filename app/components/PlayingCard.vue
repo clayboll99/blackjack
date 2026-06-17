@@ -44,8 +44,7 @@ const suit = computed(() => {
       <div>{{ suit }}</div>
     </div>
   </div>
-  <div v-else class="card">
-    <div class="card-center">Back</div>
+  <div v-else class="card card-back">
   </div>
 </template>
 
@@ -85,4 +84,13 @@ const suit = computed(() => {
   margin: auto;
   font-size: 40px;
 }
+
+.card-back {
+  background-image: 
+    linear-gradient(45deg, rgba(255,255,255,0.15) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.15) 75%),
+    linear-gradient(45deg, rgba(255,255,255,0.15) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.15) 75%),
+    linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%),
+    linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%);
+}
+
 </style>
