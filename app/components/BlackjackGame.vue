@@ -8,38 +8,40 @@ gameStore.getOrCreateGame()
 <template>
   <UContainer class="game-table">
     <UContainer v-if="gameStore.isLoading"> Game is loading... </UContainer>
-    <UContainer v-else class="grid grid-cols-2">
-      <UContainer>
-        <div>You have drawn the following cards:</div>
-        <div class="hand">
-          <PlayingCard
-            v-for="card in gameStore.hand.hand"
-            :key="card"
-            :suit="card.suit"
-            :value="card.value"
-            class="overlapping-card"
-          />
-        </div>
-        <div>Your Score: {{ gameStore.score }}</div>
-      </UContainer>
-      <UContainer class="break-after-column">
+    <UContainer v-else>
+      <UContainer class="grid grid-cols-2">
         <UContainer>
-          <div>The dealer has the following cards:</div>
+          <div>You have drawn the following cards:</div>
           <div class="hand">
             <PlayingCard
-              v-for="card in gameStore.dealerHand"
+              v-for="card in gameStore.hand.hand"
               :key="card"
               :suit="card.suit"
               :value="card.value"
-              :flipped="card.flipped"
               class="overlapping-card"
             />
           </div>
-          <div>Dealer's Score: {{ gameStore.dealerScore }}</div>
+          <div>Your Score: {{ gameStore.score }}</div>
+        </UContainer>
+        <UContainer class="break-after-column">
+          <UContainer>
+            <div>The dealer has the following cards:</div>
+            <div class="hand">
+              <PlayingCard
+                v-for="card in gameStore.dealerHand"
+                :key="card"
+                :suit="card.suit"
+                :value="card.value"
+                :flipped="card.flipped"
+                class="overlapping-card"
+              />
+            </div>
+            <div>Dealer's Score: {{ gameStore.dealerScore }}</div>
+          </UContainer>
         </UContainer>
       </UContainer>
+      <GameActions />
     </UContainer>
-    <GameActions />
   </UContainer>
 </template>
 
