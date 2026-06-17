@@ -14,16 +14,16 @@ npm install
 
 Start the development dependencies using docker:
 ```bash
+# Do this first
+cp sample.env .env
+# Make sure to update the .env file as needed
+
 docker compose up -d
 ```
 
 Start the development server on `http://localhost:3000`:
 
 ```bash
-# Do this first
-cp sample.env .env
-# Make sure to update the .env file as needed
-
 npm run dev
 ```
 Navigate to `http://localhost:3000` and select the "Login" button. You will be redirected to your local keycloak instance to login. Use the username 'test' and password 'changeme' to login.
