@@ -5,7 +5,7 @@ const game = useGameStore()
 <template>
   <UContainer v-if="game.winner === ''">
     <UButton @click="game.drawCard()">Hit</UButton>
-    <UButton @click="game.dealersTurn()">Stand</UButton>
+    <UButton class="ml-px" @click="game.dealersTurn()">Stand</UButton>
   </UContainer>
   <UContainer v-else>
     The winner is {{ game.winner }}!
