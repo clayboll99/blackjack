@@ -86,6 +86,7 @@ const suit = computed(() => {
 }
 
 .card-back {
+  background-color: #b31010;
   background-image: 
     linear-gradient(45deg, rgba(255,255,255,0.15) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.15) 75%),
     linear-gradient(45deg, rgba(255,255,255,0.15) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.15) 75%),
