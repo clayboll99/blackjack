@@ -447,6 +447,20 @@
   "webAuthnPolicyPasswordlessExtraOrigins": [],
   "users": [
     {
+      "username": "test",
+      "enabled": true,
+      "email": "test@example.com",
+      "firstName": "Test",
+      "lastName": "User",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "changeme",
+          "temporary": false
+        }
+      ]
+    },
+    {
       "id": "d26ee9bf-57d0-4981-bc65-d17b8d1b39cc",
       "username": "service-account-blackjack-web-app",
       "emailVerified": false,
@@ -636,7 +650,7 @@
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "secret": "uwDu0mShTZm80MyIkWz1yZJs9UNYlkIi",
-      "redirectUris": ["http://localhost:3000/auth/keycloak"],
+      "redirectUris": ["http://localhost:3000/*"],
       "webOrigins": [""],
       "notBefore": 0,
       "bearerOnly": false,
