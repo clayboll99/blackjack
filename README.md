@@ -33,4 +33,4 @@ Navigate to `http://localhost:3000` and select the "Login" button. You will be r
 
 The app automatically deploys to Vercel. Visit [https://blackjack-nu-two.vercel.app/](https://blackjack-nu-two.vercel.app/)
 
-Note: you will need to use a Github account to login and the account must have a publicly available email.
+Note: you will need to use a GitHub account to login and the account must have a publicly available email.
