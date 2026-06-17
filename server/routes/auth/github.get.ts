@@ -1,3 +1,5 @@
+// Only used in production
+
 export default defineOAuthGitHubEventHandler({
   config: {
     emailRequired: true,

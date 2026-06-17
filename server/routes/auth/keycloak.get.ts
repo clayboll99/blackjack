@@ -1,3 +1,5 @@
+// Only used in development
+
 export default defineOAuthKeycloakEventHandler({
   config: {
     scope: ['openid', 'profile', 'email'],
