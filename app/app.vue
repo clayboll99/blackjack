@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { DropdownMenuItem } from '#ui/components/DropdownMenu.vue'
 
-const { loggedIn, user, clear, openInPopup } = useUserSession()
+const { user, clear } = useUserSession()
 
 const logout = async () => {
   await clear()
@@ -39,7 +39,6 @@ const items = [
     </UHeader>
 
     <UMain>
-
       <NuxtPage />
     </UMain>
   </UApp>
