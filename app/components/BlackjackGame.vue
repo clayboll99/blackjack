@@ -9,6 +9,22 @@ gameStore.getOrCreateGame()
   <UContainer class="game-table">
     <UContainer v-if="gameStore.isLoading"> Game is loading... </UContainer>
     <UContainer v-else>
+      <UContainer class="break-after-column">
+        <UContainer>
+          <div>The dealer has the following cards:</div>
+          <div class="hand">
+            <PlayingCard
+              v-for="card in gameStore.dealerHand"
+              :key="card"
+              :suit="card.suit"
+              :value="card.value"
+              :flipped="card.flipped"
+              class="overlapping-card"
+            />
+          </div>
+          <div>Dealer's Score: {{ gameStore.dealerScore }}</div>
+        </UContainer>
+      </UContainer>
       <UContainer class="grid grid-cols-2">
         <UContainer>
           <div>You have drawn the following cards:</div>
@@ -22,22 +38,6 @@ gameStore.getOrCreateGame()
             />
           </div>
           <div>Your Score: {{ gameStore.score }}</div>
-        </UContainer>
-        <UContainer class="break-after-column">
-          <UContainer>
-            <div>The dealer has the following cards:</div>
-            <div class="hand">
-              <PlayingCard
-                v-for="card in gameStore.dealerHand"
-                :key="card"
-                :suit="card.suit"
-                :value="card.value"
-                :flipped="card.flipped"
-                class="overlapping-card"
-              />
-            </div>
-            <div>Dealer's Score: {{ gameStore.dealerScore }}</div>
-          </UContainer>
         </UContainer>
       </UContainer>
       <GameActions />
