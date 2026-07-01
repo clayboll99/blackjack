@@ -35,6 +35,12 @@ export default class Deck {
   }
 
   static getCardValue(card: { suit: string; value: string }) {
+    if (
+      (card.suit === 'Hearts' || card.suit === 'Diamonds') &&
+      card.value === '4'
+    ) {
+      return 8
+    }
     switch (card.value) {
       case 'A':
         return 11
