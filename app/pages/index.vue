@@ -4,8 +4,8 @@ const loginUrl = import.meta.env.PROD ? '/auth/github' : '/auth/keycloak'
 </script>
 
 <template>
-  <UButton v-if="!loggedIn" class="object-center" @click="openInPopup(loginUrl)"
-    >Login</UButton
-  >
-  <UButton v-else to="/game" class="object-center">Start a Game</UButton>
+  <div class="flex justify-center">
+    <UButton v-if="!loggedIn" @click="openInPopup(loginUrl)">Login</UButton>
+    <UButton v-else to="/game">Start a Game</UButton>
+  </div>
 </template>
